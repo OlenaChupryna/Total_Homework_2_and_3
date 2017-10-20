@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Homework_3</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+	</head>
+   
+	<body>
+		<h1>Умный дом</h1>
+		<script src="script.js"></script>
+		<form name = "create_gadget" class = "lamp">
+			<input id = "creater" type = "button"  class = "chandelier"  value = "Create" />
+			<ul>
+				<li><input name="gadget_type" type="radio" value="lamp" checked = "checked"/>Lamp<br /></li>
+				<li><input name="gadget_type" type="radio" value="chandelier" />Chandelier<br /></li>				
+				<li><input name="gadget_type" type="radio" value="washer" />Washer<br /></li>
+			</ul>
+		</form>	 
+		
+		<div class = "lamp square" id = "lampPattern">
+			<div>Lamp</div>
+			<form>
+				<input id = "checkbox-lamp" type = "checkbox"  onchange = ""/><br/>
+				<label for = "checkbox-lamp"><img class = "lamp-image" src="./images/lamp_off.jpg" alt="Lamp is off" /></label>
+			</form>
+		</div>	
+		
+		<div class = "chandelier square" id = "chandelierPattern">
+			<div>Chandelier</div>
+			<form>
+				<input id = "checkbox-chandelier" type = "checkbox"  onchange = ""/> 
+				<label for = "checkbox-chandelier">light is off</label>
+			</form>
+			<form>
+				<input id = "range" type = "range" min = "0" max = "100" step = "10" value = "50" onchange = ""/>
+				<label for = "range">light power is <span>50</span>%</label>
+			</form>
+		</div>	
+			
+		<div class = "washer square" id = "washerPattern">
+			<div>Washer</div>
+			<form>
+				<input id = "checkbox-washer" type = "checkbox"  onchange = ""/>
+				<label for = "checkbox-washer">Washer is off</label>
+			</form>
+			<form>				
+				<ul class = "programme-number-list">				
+					<li><input id = "choose-washer-programme" type = "button"  class = "programme 1"  value = "Choose programme" /></li>
+					<li>
+						<ul class = "programme-number">
+							<li><input  name="programme-number" type="radio" value="programme1" checked = "checked"/>Cotton</li>
+							<li><input  name="programme-number" type="radio" value="programme2" />Synthetic</li>		
+						</ul>
+					</li>
+				</ul>		
+			</form>
+			
+			<form>				
+				<input id = "start-button" class = "start-button" type = "button"  value = "Start" onclick = ""/>
+			</form>
+			
+			<div class = "washer-tablo">
+				<div> Programme: <span>Cotton</span></div>
+				<div> Washer's state: <span>waiting</span></div>
+				<div> Temperature: <span>40</span> degrees</div>
+				<div> Number of turnes: <span>1000</span></div>
+				<div> Programme duration: <span>50</span> min</div>
+			</div>
+			
+		</div>	
+	
+		<script>
+			let createFotm = document.forms[0];
+			let createGadgetButton = document.getElementById("creater");
+						
+			createGadgetButton.onclick = function() {
+				switch (this.form.className) {
+					case "lamp": 
+						createLamps();
+						break;
+					case "chandelier": 
+						createChandeliers();
+						break;				
+					case "washer": 
+						createWashers();	
+				}
+			}
+
+			let createdGadgerts = createFotm.elements["gadget_type"];
+
+			for (let i = 0; i < createdGadgerts.length; i++) {
+				createdGadgerts[i].onchange = function() {
+					createFotm.className = createdGadgerts[i].value;					
+				}
+			}	
+		
+		</script>
+			
+	</body>
+
+</html>
